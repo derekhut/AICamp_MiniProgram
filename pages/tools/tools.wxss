@@ -1,0 +1,50 @@
+/**tools.wxss**/
+.section {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.tools-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* 标签页样式 */
+.tabs {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  background-color: #fff;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+  border-radius: 16rpx;
+}
+
+.tab {
+  display: inline-block;
+  padding: 10rpx 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.3s;
+  margin-right: 10rpx;
+}
+
+.tab.active {
+  color: #5468ff;
+  font-weight: 500;
+  position: relative;
+}
+
+.tab.active:after {
+  content: "";
+  position: absolute;
+  bottom: -10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 6rpx;
+  background-color: #5468ff;
+  border-radius: 3rpx;
+}

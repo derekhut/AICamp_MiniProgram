@@ -1,0 +1,14 @@
+<!--components/tool-card/tool-card.wxml-->
+<view class="card" bindtap="onTap">
+  <view class="card-header">
+    <view wx:if="{{tool.isPick}}" class="our-pick">
+      <image class="our-pick-icon" src="/images/star.png" mode="aspectFit"></image>
+      <text>Our Pick</text>
+    </view>
+    <view class="card-title">{{tool.title}}</view>
+    <view class="card-description">{{tool.description}}</view>
+  </view>
+  <view class="card-footer">
+    <view class="card-tag">{{categoryNames[tool.category]}}</view>
+  </view>
+</view>

@@ -1,0 +1,97 @@
+<!--pages/tool-detail/sentence/index.wxml-->
+<view class="container">
+  <!-- 顶部工具信息 -->
+  <view class="tool-header" wx:if="{{tool}}">
+    <view class="tool-title">{{tool.title}}</view>
+    <view class="tool-description">{{tool.description}}</view>
+    <view class="tool-category">{{tool.category === 'smart_classroom' ? '智慧课堂' : 
+                          tool.category === 'knowledge_encyclopedia' ? '百科大全' : 
+                          tool.category === 'creativity_lab' ? '创意工坊' : '心灵成长'}}</view>
+  </view>
+  
+  <!-- 错误提示 -->
+  <view class="error-message" wx:if="{{error}}">
+    <text>{{error}}</text>
+  </view>
+  
+  <!-- 工具表单 -->
+  <view class="form-container" wx:if="{{tool && !error}}">
+    <form bindsubmit="handleSubmit">
+      <!-- 动态生成表单项 -->
+      <block wx:for="{{tool.formFields}}" wx:key="id">
+        <!-- 文本输入 -->
+        <view class="form-item" wx:if="{{item.type === 'text'}}">
+          <view class="form-label">
+            {{item.label}}
+            <text class="required" wx:if="{{item.required}}">*</text>
+          </view>
+          <input 
+            class="form-input" 
+            type="text" 
+            placeholder="{{item.placeholder || '请输入' + item.label}}" 
+            value="{{formData[item.id]}}" 
+            bindinput="handleFieldChange" 
+            data-field="{{item.id}}"
+          />
+        </view>
+        
+        <!-- 文本区域 -->
+        <view class="form-item" wx:if="{{item.type === 'textarea'}}">
+          <view class="form-label">
+            {{item.label}}
+            <text class="required" wx:if="{{item.required}}">*</text>
+          </view>
+          <textarea 
+            class="form-textarea" 
+            placeholder="{{item.placeholder || '请输入' + item.label}}" 
+            value="{{formData[item.id]}}" 
+            bindinput="handleFieldChange" 
+            data-field="{{item.id}}"
+          />
+        </view>
+        
+        <!-- 数字输入 -->
+        <view class="form-item" wx:if="{{item.type === 'number'}}">
+          <view class="form-label">
+            {{item.label}}
+            <text class="required" wx:if="{{item.required}}">*</text>
+          </view>
+          <view class="number-input-container">
+            <input 
+              class="form-input number-input" 
+              type="number" 
+              value="{{formData[item.id]}}" 
+              bindinput="handleFieldChange" 
+              data-field="{{item.id}}"
+            />
+            <view class="number-range" wx:if="{{item.min !== undefined && item.max !== undefined}}">
+              范围: {{item.min}} - {{item.max}}
+            </view>
+          </view>
+        </view>
+        
+        <!-- 单选框 -->
+        <view class="form-item" wx:if="{{item.type === 'radio'}}">
+          <view class="form-label">
+            {{item.label}}
+            <text class="required" wx:if="{{item.required}}">*</text>
+          </view>
+          <radio-group class="radio-group" bindchange="handleFieldChange" data-field="{{item.id}}">
+            <label class="radio-label" wx:for="{{item.options}}" wx:for-item="option" wx:key="value">
+              <radio value="{{option.value}}" checked="{{formData[item.id] === option.value}}" />
+              <text>{{option.label}}</text>
+            </label>
+          </radio-group>
+        </view>
+      </block>
+      
+      <!-- 提交按钮 -->
+      <view class="form-actions">
+        <button class="btn-back" bindtap="navigateBack">返回</button>
+        <button class="btn-generate" bindtap="handleSubmit" loading="{{loading}}">
+          {{loading ? '生成中...' : '生成'}}
+        </button>
+      </view>
+    </form>
+  </view>
+</view>

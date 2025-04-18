@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- Logo 和标题区域 -->
+  <view class="header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <view class="title">AI Camp</view>
+    <view class="subtitle">AI教育工具创新平台</view>
+  </view>
+  
+  <!-- 介绍文本 -->
+  <view class="intro">
+    <text>为教师和学生提供智能AI教学工具，提升教学效率与学习体验</text>
+  </view>
+  
+  <!-- 开始使用按钮 -->
+  <view class="primary-button" bindtap="navigateToTools">开始使用</view>
+  
+  <!-- 底部装饰 -->
+  <view class="footer">
+    <text class="footnote">无需登录，即刻体验</text>
+  </view>
+</view>

@@ -1,0 +1,98 @@
+/**app.wxss**/
+page {
+  background-color: #f6f7f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+
+/* 卡片样式 */
+.card {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:active {
+  box-shadow: 0 4rpx 16rpx 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-2rpx);
+}
+
+.card-header {
+  padding: 20rpx 24rpx 10rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.card-description {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.card-footer {
+  padding: 16rpx 24rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.card-tag {
+  font-size: 20rpx;
+  color: #5468ff;
+  background-color: rgba(84, 104, 255, 0.1);
+  padding: 4rpx 16rpx;
+  border-radius: 100rpx;
+}
+
+/* 按钮样式 */
+.primary-button {
+  width: 60%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #5468ff;
+  color: white;
+  border-radius: 44rpx;
+  text-align: center;
+  font-size: 32rpx;
+  margin: 40rpx 0;
+}
+
+/* 标题样式 */
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin: 40rpx 0 20rpx;
+  align-self: flex-start;
+  padding-left: 16rpx;
+}
+
+/* Our Pick 标签 */
+.our-pick {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  color: #FF6B35;
+  margin-bottom: 10rpx;
+}
+
+.our-pick-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}

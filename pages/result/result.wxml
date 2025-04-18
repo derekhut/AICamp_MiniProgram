@@ -1,0 +1,64 @@
+<!--pages/result/result.wxml-->
+<view class="container">
+  <!-- 结果头部 -->
+  <view class="result-header">
+    <view class="tool-name">{{toolName}}</view>
+    <view class="timestamp">{{timestamp ? tools.formatDate(timestamp) : ''}}</view>
+  </view>
+  
+  <!-- 结果内容 -->
+  <view class="result-content">
+    <rich-text nodes="{{tools.formatContent(content)}}"></rich-text>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="action-btn copy-btn" bindtap="copyContent">
+      <image class="btn-icon" src="/images/copy-icon.png" mode="aspectFit"></image>
+      <text>{{copied ? '已复制' : '复制内容'}}</text>
+    </button>
+    
+    <button class="action-btn share-btn" open-type="share">
+      <image class="btn-icon" src="/images/share-icon.png" mode="aspectFit"></image>
+      <text>分享</text>
+    </button>
+  </view>
+  
+  <!-- 底部导航 -->
+  <view class="nav-buttons">
+    <button class="nav-btn back-btn" bindtap="goBackToTool">返回工具</button>
+    <button class="nav-btn home-btn" bindtap="goToTools">工具列表</button>
+  </view>
+</view>
+
+<!-- 工具函数 -->
+<wxs module="tools">
+  // 格式化日期
+  function formatDate(timestamp) {
+    var date = getDate(timestamp);
+    var year = date.getFullYear();
+    var month = padZero(date.getMonth() + 1);
+    var day = padZero(date.getDate());
+    var hour = padZero(date.getHours());
+    var minute = padZero(date.getMinutes());
+    
+    return year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+  }
+  
+  // 数字补零
+  function padZero(num) {
+    return num < 10 ? '0' + num : num;
+  }
+  
+  // 格式化内容（处理换行符）
+  function formatContent(content) {
+    if (!content) return '';
+    // 在微信小程序中，rich-text会自动处理\n为换行，无需替换为<br/>
+    return content;
+  }
+  
+  module.exports = {
+    formatDate: formatDate,
+    formatContent: formatContent
+  };
+</wxs>

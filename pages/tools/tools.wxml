@@ -1,0 +1,61 @@
+<!--tools.wxml-->
+<view class="container">
+  <!-- 推荐工具部分 -->
+  <view class="section">
+    <view class="section-title">推荐给你</view>
+    <view class="tools-grid">
+      <block wx:for="{{popularTools}}" wx:key="id">
+        <view class="card" bindtap="navigateToToolDetail" data-id="{{item.id}}">
+          <view class="card-header">
+            <view wx:if="{{item.isPick}}" class="our-pick">
+              <image class="our-pick-icon" src="/images/star.png" mode="aspectFit"></image>
+              <text>Our Pick</text>
+            </view>
+            <view class="card-title">{{item.title}}</view>
+            <view class="card-description">{{item.description}}</view>
+          </view>
+          <view class="card-footer">
+            <view class="card-tag">{{item.category === 'smart_classroom' ? '智慧课堂' : 
+                            item.category === 'knowledge_encyclopedia' ? '百科大全' : 
+                            item.category === 'creativity_lab' ? '创意工坊' : '心灵成长'}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 所有工具部分 -->
+  <view class="section">
+    <view class="section-title">所有工具</view>
+    
+    <!-- 分类标签页 -->
+    <view class="tabs">
+      <view wx:for="{{categories}}" wx:key="id" 
+            class="tab {{activeTab === item.id ? 'active' : ''}}"
+            bindtap="switchTab" data-id="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>
+    
+    <!-- 工具列表 -->
+    <view class="tools-grid">
+      <block wx:for="{{filteredTools}}" wx:key="id">
+        <view class="card" bindtap="navigateToToolDetail" data-id="{{item.id}}">
+          <view class="card-header">
+            <view wx:if="{{item.isPick}}" class="our-pick">
+              <image class="our-pick-icon" src="/images/star.png" mode="aspectFit"></image>
+              <text>Our Pick</text>
+            </view>
+            <view class="card-title">{{item.title}}</view>
+            <view class="card-description">{{item.description}}</view>
+          </view>
+          <view class="card-footer">
+            <view class="card-tag">{{item.category === 'smart_classroom' ? '智慧课堂' : 
+                            item.category === 'knowledge_encyclopedia' ? '百科大全' : 
+                            item.category === 'creativity_lab' ? '创意工坊' : '心灵成长'}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
